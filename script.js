@@ -55,3 +55,4 @@ const func = async () => {
 
         mainSection.appendChild(div);
     }
+}
