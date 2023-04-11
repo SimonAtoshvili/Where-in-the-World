@@ -82,3 +82,4 @@ const func = async () => {
     });
 }
 
+func();
