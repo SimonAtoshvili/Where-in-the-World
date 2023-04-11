@@ -1,0 +1,10 @@
+body {
+    max-width: 1440px;
+    margin: 0 auto;
+
+}
+main {
+    padding-top: 100px;
+    background-color: hsl(207, 26%, 17%);
+    transition: background-color 3s linear;
+}
