@@ -55,4 +55,30 @@ const func = async () => {
 
         mainSection.appendChild(div);
     }
+
+    mode.addEventListener("click", function () {
+        if(mode.innerText === "☀️ Light Mode"){
+            mode.innerText = "🌑 Dark Mode";
+            mode.style.color = "hsl(200, 15%, 8%)";
+        } else {
+            mode.innerText = "☀️ Light Mode";
+            mode.style.color = "hsl(0, 0%, 100%)";
+        }
+        header.classList.toggle("header_light");
+        mainEl.classList.toggle("main_light");
+        headingTop.classList.toggle("h1_light");
+        const select = document.querySelector("select");
+        const input = document.querySelector("input");
+        select.classList.toggle("select_light");
+        input.classList.toggle("input_light");
+        const cardsList = document.querySelectorAll(".card");
+        const pList = document.querySelectorAll("p");
+        const nameList = document.querySelectorAll("h2");
+        for (let i = 0; i < pList.length; i++) {
+            cardsList[i].classList.toggle("card_light");
+            nameList[i].classList.toggle("h2_light");
+            pList[i].classList.toggle("p_light");
+        }
+    });
 }
+
