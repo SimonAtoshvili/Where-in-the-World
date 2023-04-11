@@ -9,6 +9,11 @@ main {
     transition: background-color 3s linear;
 }
 
+.main_light {
+    background-color: hsl(0, 0%, 90%);
+    transition: background-color 3s linear;
+}
+
 
 /* Header */
 
@@ -107,12 +112,12 @@ select {
     gap: 50px;
 }
 
-.main_light {
-    background-color: hsl(0, 0%, 90%);
-    transition: background-color 3s linear;
-}
 
 .card {
+    display: none;
+}
+
+.new_card {
     width: 22%;
     height: 380px;
     padding: 20px;
@@ -120,13 +125,13 @@ select {
     transition: background-color 3s linear;
 }
 
-.card:hover {
+.new_card:hover {
     cursor: pointer;
     box-shadow: 10px 10px black;
     transition: box-shadow 0.3s 0.1s linear;
 }
 
-.card_light {
+.new_card_light {
     background-color: hsl(0, 0%, 100%);
     transition: background-color 3s linear;
 
@@ -153,6 +158,6 @@ p {
     transition: color 3s linear;
 }
 
-.bold_word {
+.bold{
     font-weight: 700;
 }
