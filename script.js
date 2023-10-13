@@ -29,7 +29,7 @@ function details(params) {
         clickDiv[i].addEventListener("click", function () {
 
             localStorage.setItem("selected", params[i]["name"]["common"]);
-            window.open("/details.html")
+            window.open("./details.html")
         });
     }
 }
