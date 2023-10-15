@@ -95,7 +95,7 @@ removeFilters.addEventListener("click", function () {
 })
 
 mode.addEventListener("click", function () {
-    if (mode.innerHTML.includes(`☀️ <span class="mode_text">Light Mode</span>`)) {
+    if (mode.innerHTML.includes(`Light`)) {
         mode.innerHTML = `🌑 <span class="mode_text">Dark Mode</span>`;
         mode.style.color = "hsl(200, 15%, 8%)";
     } else {
