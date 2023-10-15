@@ -26,22 +26,17 @@ header {
     transition: background-color 1s linear;
 }
 
-.header_light {
-    background-color: hsl(0, 0%, 100%);
-    transition: background-color 1s linear;
-}
-
 h1 {
     font-size: 40px;
     font-weight: 800;
+}
+
+h1, h2, h3, p, .mode, input::placeholder {
     color: hsl(0, 0%, 100%);
     transition: color 1s linear;
 }
 
-.h1_light,
-.h2_light,
-.p_light,
-.h3_light {
+.h1_light, .h2_light, .p_light, .h3_light, .input_light::placeholder {
     color: hsl(200, 15%, 8%);
     transition: color 1s linear;
 }
@@ -49,8 +44,14 @@ h1 {
 .mode {
     font-size: 20px;
     cursor: pointer;
-    color: hsl(0, 0%, 100%);
-    transition: color 1s linear;
+    font-weight: 700;
+}
+
+.mode_text:hover {
+    background: linear-gradient(to right, hsl(0, 66%, 40%), hsl(240, 100%, 50%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 /* Section 1 */
@@ -64,16 +65,6 @@ h1 {
     align-items: center;
 }
 
-input,
-select {
-    height: 30px;
-    background-color: hsl(209, 23%, 22%);
-    color: hsl(0, 0%, 100%);
-    font-size: 18px;
-    padding-left: 10px;
-    transition: background-color 1s linear;
-}
-
 .search {
     width: 490px;
     display: flex;
@@ -85,26 +76,9 @@ input {
     width: 400px;
 }
 
-.search_icon{
-    height: 30px;
-    padding: 0 20px;
-    font-size: 20px;
-    background-color: hsl(209, 23%, 22%);
-}
-
-.remove_filters {
-    height: 30px;
-    padding: 0 10px;
-    background-color: hsl(209, 23%, 22%);
-    color: hsl(0, 0%, 100%);
-    border: 2px solid;
-    border-image: linear-gradient(to right, rgb(168, 34, 34), rgb(33, 33, 155)) 1;
-    transition: background-color 1s linear;
-}
-
 button:hover {
     cursor: pointer;
-    border: none;
+    border: 3px solid transparent;
     box-shadow: 2px 2px 5px black;
 }
 
@@ -112,17 +86,22 @@ select {
     width: 20%;
 }
 
-::placeholder {
+input::placeholder {
     font-size: 18px;
-    color: hsl(0, 0%, 100%);
 }
 
-.input_light,
-.select_light,
-.remove_filters_light {
-    color: hsl(200, 15%, 8%);
-    background-color: hsl(0, 0%, 100%);
+input,
+select,
+.remove_filters,
+.search_icon {
+    padding: 0 10px;
+    height: 30px;
+    font-size: 18px;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(209, 23%, 22%);
     transition: background-color 1s linear;
+    border: 3px solid;
+    border-image: linear-gradient(to right,  hsl(0, 66%, 40%), hsl(240, 100%, 50%)) 1;
 }
 
 /* Section 2 */
@@ -133,12 +112,12 @@ select {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 50px;
+    gap: 40px;
 }
 
 .new_card {
     width: 22%;
-    height: 380px;
+    height: 400px;
     padding: 20px;
     background-color: hsl(209, 23%, 22%);
     transition: background-color 1s linear;
@@ -150,10 +129,22 @@ select {
     transition: box-shadow 0.3s 0.1s linear;
 }
 
+.input_light,
+.select_light,
+.remove_filters_light,
+.search_icon_light,
+.header_light,
 .new_card_light {
+    color: hsl(200, 15%, 8%);
     background-color: hsl(0, 0%, 100%);
     transition: background-color 1s linear;
 }
+
+/* .new_card_light {
+    background-color: hsl(0, 0%, 100%);
+    transition: background-color 1s linear;
+    color: hsl(200, 15%, 8%);
+} */
 
 img {
     width: 100%;
@@ -161,25 +152,20 @@ img {
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     margin: 20px 0;
-    color: hsl(0, 0%, 100%);
-    transition: color 1s linear;
 }
 
 p {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 300;
     line-height: 38px;
-    color: hsl(0, 0%, 100%);
-    transition: color 1s linear;
 }
 
 .bold {
     font-weight: 700;
 }
-
 
 /* Section 3 */
 
@@ -206,7 +192,117 @@ p {
 }
 
 h3 {
-    color: hsl(0, 0%, 100%);
     font-size: 30px;
     font-weight: 700;
+}
+
+
+@media (max-width: 1200px) {
+    img {
+        height: 140px;
+    }
+    .new_card {
+        height: 380px;
+        padding: 15px;
+    }
+
+    .section_2 {
+        padding: 20px;
+        gap: 30px;
+    }
+
+    .section_1 {
+        padding: 0 20px;
+    }
+
+    input::placeholder,
+    input,
+    select {
+        font-size: 15px;
+        padding-left: 5px;
+    }
+    .remove_filters {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 900px) {
+    .new_card {
+        width: 29%;
+    }
+    .search {
+        width: 320px;
+    }
+    input {
+        width: 230px;
+    }
+    select {
+        width: 23%;
+    }
+}
+
+@media (max-width: 700px) {
+    header {
+        height: 60px;
+    }
+    h1 {
+        font-size: 32px;
+    }
+    main {
+        padding-top: 60px;
+    }
+    .new_card {
+        width: 40%;
+    }
+    .section_1 {
+        flex-wrap: wrap;
+    }
+    .search {
+        width: 100%;
+    }
+    input {
+        width: 300px;
+    }
+    select {
+        width: 150px;
+    }
+}
+
+@media (max-width: 580px) {
+    .new_card {
+        width: 45%;
+        padding: 5px;
+    }
+    .mode_text {
+        display: none;
+    }
+    img {
+        height: 120px;
+    }
+    .new_card {
+        height: 360px;
+    }
+    input {
+        width: 200px;
+    }
+    p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 375px) {
+    .new_card {
+        width: 90%;
+        padding: 20px;
+    }
+    .section_2 {
+        flex-direction: column;
+        align-items: center;
+    }
+    h1 {
+        font-size: 18px;
+    }
+    input {
+        width: auto;
+    }
 }

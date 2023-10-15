@@ -10,6 +10,7 @@ const input = document.querySelector("input");
 const removeFilters = document.querySelector(".remove_filters");
 
 let clickDiv = mainSection.children;
+let data;
 
 
 function domChanges(params) {
@@ -36,7 +37,7 @@ function details(params) {
 
 const func = async () => {
     const response = await fetch("https://restcountries.com/v3.1/all");
-    let data = await response.json();
+    data = await response.json();
 
     localStorage.setItem("data", JSON.stringify(data));
 
@@ -44,80 +45,79 @@ const func = async () => {
     details(data);
 
     clickDiv = mainSection.children;
-
-    const namesArray = document.querySelectorAll("h2");
-
-    let selectedValue = select.value;
-    let val = input.value.toLowerCase();
-
-    function search() {
-        val = input.value.toLowerCase();
-        selectedValue = select.value;
-
-        let filteredDivs = data.filter((country) => country["name"]["common"].toLowerCase().includes(val) && country.region.includes(selectedValue))
-
-        mainSection.innerHTML = null;
-        domChanges(filteredDivs);
-
-        clickDiv = mainSection.children;
-        details(filteredDivs);
-    }
-
-    searchFunc.addEventListener("click", function () {
-        search();
-    })
-
-    input.addEventListener("keypress", function(event) {
-        if (event.keyCode === 13) {
-            search();
-        }
-    })
-
-    select.addEventListener("change", function () {
-        selectedValue = select.value;
-        val = input.value.toLowerCase();
-
-        let filtered = data.filter((country) => country.region.includes(selectedValue) && country["name"]["common"].toLowerCase().includes(val))
-
-        mainSection.innerHTML = null;
-        domChanges(filtered);
-
-        clickDiv = mainSection.children;
-        details(filtered);
-    })
-
-    mode.addEventListener("click", function () {
-        if (mode.innerText === "☀️ Light Mode") {
-            mode.innerText = "🌑 Dark Mode";
-            mode.style.color = "hsl(200, 15%, 8%)";
-        } else {
-            mode.innerText = "☀️ Light Mode";
-            mode.style.color = "hsl(0, 0%, 100%)";
-        }
-        header.classList.toggle("header_light");
-        mainEl.classList.toggle("main_light");
-        headingTop.classList.toggle("h1_light");
-        const select = document.querySelector("select");
-        const input = document.querySelector("input");
-        select.classList.toggle("select_light");
-        input.classList.toggle("input_light");
-        removeFilters.classList.toggle("remove_filters_light")
-        const pList = document.querySelectorAll("p");
-        const cardList = document.querySelectorAll(".new_card")
-        for (let i = 0; i < pList.length; i++) {
-            pList[i].classList.toggle("p_light");
-        }
-        for (let i = 0; i < cardList.length; i++) {
-            cardList[i].classList.toggle("new_card_light");
-            namesArray[i].classList.toggle("h2_light");
-        }
-    });
-
-    removeFilters.addEventListener("click", function () {
-        mainSection.innerHTML = null;
-        input.value = "";
-        select.selectedIndex = 0;
-        domChanges(data);
-    })
 }
 func();
+
+let selectedValue = select.value;
+let val = input.value.toLowerCase();
+
+function search() {
+    val = input.value.toLowerCase();
+    selectedValue = select.value;
+
+    let filteredDivs = data.filter((country) => country["name"]["common"].toLowerCase().includes(val) && country.region.includes(selectedValue))
+
+    mainSection.innerHTML = null;
+    domChanges(filteredDivs);
+
+    clickDiv = mainSection.children;
+    details(filteredDivs);
+}
+
+searchFunc.addEventListener("click", function () {
+    search();
+})
+
+input.addEventListener("keypress", function (event) {
+    if (event.keyCode === 13) {
+        search();
+    }
+})
+
+select.addEventListener("change", function () {
+    selectedValue = select.value;
+    val = input.value.toLowerCase();
+
+    let filtered = data.filter((country) => country.region.includes(selectedValue) && country["name"]["common"].toLowerCase().includes(val))
+
+    mainSection.innerHTML = null;
+    domChanges(filtered);
+
+    clickDiv = mainSection.children;
+    details(filtered);
+})
+
+removeFilters.addEventListener("click", function () {
+    mainSection.innerHTML = null;
+    input.value = "";
+    select.selectedIndex = 0;
+    domChanges(data);
+})
+
+mode.addEventListener("click", function () {
+    if (mode.innerHTML.includes(`☀️ <span class="mode_text">Light Mode</span>`)) {
+        mode.innerHTML = `🌑 <span class="mode_text">Dark Mode</span>`;
+        mode.style.color = "hsl(200, 15%, 8%)";
+    } else {
+        mode.innerHTML = `☀️ <span class="mode_text">Light Mode</span>`;
+        mode.style.color = "hsl(0, 0%, 100%)";
+    }
+    header.classList.toggle("header_light");
+    mainEl.classList.toggle("main_light");
+    headingTop.classList.toggle("h1_light");
+    searchFunc.classList.toggle("search_icon_light");
+    select.classList.toggle("select_light");
+    input.classList.toggle("input_light");
+    removeFilters.classList.toggle("remove_filters_light");
+
+    let cardList = document.querySelectorAll(".new_card");
+    let pList = document.querySelectorAll("p");
+    let namesArray = document.querySelectorAll("h2");
+    for (let i = 0; i < pList.length; i++) {
+        pList[i].classList.toggle("p_light");
+    }
+    for (let i = 0; i < cardList.length; i++) {
+        cardList[i].classList.toggle("new_card_light");
+        namesArray[i].classList.toggle("h2_light");
+    }
+});
