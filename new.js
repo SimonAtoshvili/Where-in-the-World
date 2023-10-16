@@ -60,11 +60,11 @@ const pList = document.querySelectorAll("p");
 const h3 = document.querySelector("h3")
 
 mode.addEventListener("click", function () {
-    if (mode.innerText === "☀️ Light Mode") {
-        mode.innerText = "🌑 Dark Mode";
+    if (mode.innerHTML.includes(`Light`)) {
+        mode.innerHTML = `🌑 <span class="mode_text">Dark Mode</span>`;
         mode.style.color = "hsl(200, 15%, 8%)";
     } else {
-        mode.innerText = "☀️ Light Mode";
+        mode.innerHTML = `☀️ <span class="mode_text">Light Mode</span>`;
         mode.style.color = "hsl(0, 0%, 100%)";
     }
     header.classList.toggle("header_light");
